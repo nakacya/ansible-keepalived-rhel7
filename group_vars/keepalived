@@ -3,6 +3,6 @@
 #
 # keepalived 
 #
-ip_address: 192.168.56.100
-interface:  enp0s8
+ip_address: 0.0.0.0
+interface:  eth0
 keepalived_options: "-D S 7"
