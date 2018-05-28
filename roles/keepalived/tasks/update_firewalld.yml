@@ -1,0 +1,26 @@
+---
+# Firewalld Change
+#X#- name: Firewall Change
+-  shell: "/bin/firewall-cmd --direct --add-rule ipv4 filter INPUT 1 -i {{ interface }} -d 224.0.0.18 -p vrrp -j ACCEPT"
+- shell: "/bin/firewall-cmd --direct --add-rule ipv4 filter OUTPUT 1 -i {{ interface }} -d 224.0.0.18 -p vrrp -j ACCEPT"
+-  shell: "/bin/firewall-cmd --runtime-to-permanent"
+- name: firewalla restart
+  service: name=firewalld state=reloaded
+
+#X#- firewalld:
+#X#   chain: INPUT
+#X#   fw_family: ipv4
+#X#   table: filter
+#X#   direct_rule: '1 -i enp0s8 -d 224.0.0.18 -p vrrp -j ACCEPT'
+#X#   immediate: true
+#X#   state: enabled
+#X#   parmanent: true
+#X#
+#X#- firewalld:
+#X#   chain: OUTPUT
+#X#   fw_family: ipv4
+#X#   table: filter
+#X#   direct_rule: '1 -i enp0s8 -d 224.0.0.18 -p vrrp -j ACCEPT'
+#X#   immediate: true
+#X#   state: enabled
+#X#   permanent: true

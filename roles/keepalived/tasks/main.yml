@@ -1,0 +1,4 @@
+---
+- include: install_keepalived.yml
+- include: update_rsyslogd.yml
+- include: update_firewalld.yml

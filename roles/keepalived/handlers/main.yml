@@ -1,0 +1,9 @@
+---
+- name: restart keepalived
+  service: name=keepalived state=restarted enabled=yes
+
+#X#- name: restart zabbix-server
+#X#  service: name=zabbix-server state=restarted enabled=yes
+#X#
+#X#- name: restart httpd
+#X#  service: name=httpd state=restarted enabled=yes

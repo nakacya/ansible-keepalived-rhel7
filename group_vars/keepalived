@@ -1,0 +1,8 @@
+# Here are variables related to the keepalived installation
+
+#
+# keepalived 
+#
+ip_address: 192.168.56.100
+interface:  enp0s8
+keepalived_options: "-D S 7"

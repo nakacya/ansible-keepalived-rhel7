@@ -1,0 +1,8 @@
+---
+# This playbook deploys the ZABBIX server. 
+- hosts: keepalived
+  become: yes
+  #remote_user: root
+
+  roles:
+    - keepalived

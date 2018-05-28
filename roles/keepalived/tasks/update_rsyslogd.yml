@@ -1,0 +1,7 @@
+---
+# rsyslog keepalive Change
+- name: Copy rsyslog keepalived config
+  copy: src=rsyslogd.conf dest=/etc/rsyslog.d/keepalived.conf owner=root group=root mode=0644
+
+- name: rsyslog restart
+  service: name=rsyslog state=restarted

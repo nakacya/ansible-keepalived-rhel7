@@ -1,0 +1,26 @@
+---
+# Download and install for Centos/RHEL version 7
+
+- name: Install keepalived
+  yum: name={{ item }} state=latest
+  with_items:
+    - keepalived
+
+# Copy a new 'keepalived' file into place
+-  template: src=keepalived.conf.j2 dest=/etc/keepalived/keepalived.conf owner=root group=root mode=0644
+- name: Copy a new 'keepalived' file into place
+  copy: src=notify.sh dest=/etc/keepalived/notify.sh owner=root group=root mode=0755
+
+- name: Copy a new 'keepalived.service' file into place
+  copy: src=keepalived.service dest=/usr/lib/systemd/system/keepalived.service owner=root group=root mode=0644
+- shell: "systemctl daemon-reload"
+
+- name: set keepalived startup options
+  lineinfile: >-
+    dest='/etc/sysconfig/keepalived'
+    regexp="^KEEPALIVED_OPTIONS="
+    insertafter="^;KEEPALIVED_OPTIONS="
+    line="KEEPALIVED_OPTIONS="{{ keepalived_options }}""
+
+- name: keepalived start and enabled
+  service: name=keepalived state=started enabled=yes
